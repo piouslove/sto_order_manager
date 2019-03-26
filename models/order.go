@@ -47,8 +47,8 @@ func (o OrderSlice) Less(i, j int) bool {
 	u := new(big.Int)
 	v := new(big.Int)
 	w := new(big.Int)
-	u.SetString(o[i].MakerAssetAmount, 10)
-	v.SetString(o[i].TakerAssetAmount, 10)
+	u.SetString(o[j].MakerAssetAmount, 10)
+	v.SetString(o[j].TakerAssetAmount, 10)
 	w.Div(v, u)
 	return z.Cmp(w) <= 0
 }
