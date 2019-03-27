@@ -37,19 +37,19 @@ func (o OrderSlice) Len() int      { return len(o) }
 func (o OrderSlice) Swap(i, j int) { o[i], o[j] = o[j], o[i] }
 
 func (o OrderSlice) Less(i, j int) bool {
-	x := new(big.Int)
-	y := new(big.Int)
-	z := new(big.Int)
-	x.SetString(o[i].MakerAssetAmount, 10)
-	y.SetString(o[i].TakerAssetAmount, 10)
-	z.Div(y, x)
+	x := new(big.Float)
+	y := new(big.Float)
+	z := new(big.Float)
+	x.SetString(o[i].MakerAssetAmount)
+	y.SetString(o[i].TakerAssetAmount)
+	z.Quo(y, x)
 
-	u := new(big.Int)
-	v := new(big.Int)
-	w := new(big.Int)
-	u.SetString(o[j].MakerAssetAmount, 10)
-	v.SetString(o[j].TakerAssetAmount, 10)
-	w.Div(v, u)
+	u := new(big.Float)
+	v := new(big.Float)
+	w := new(big.Float)
+	u.SetString(o[j].MakerAssetAmount)
+	v.SetString(o[j].TakerAssetAmount)
+	w.Quo(v, u)
 	return z.Cmp(w) <= 0
 }
 
